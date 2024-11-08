@@ -48,3 +48,13 @@ func TestJText(t *testing.T) {
 		t.Errorf("Expected Hello, got %s", b.String())
 	}
 }
+
+func TestMultipleAttributes(t *testing.T) {
+	var b bytes.Buffer
+	New(&b).CustomElement("div", Attrs{"class": "foo", "id": "bar"}, func(j J) {
+		j.Text("Hello")
+	})
+	if b.String() != "<div class=\"foo\" id=\"bar\">Hello</div>" {
+		t.Errorf("Expected <div class=\"foo\" id=\"bar\">Hello</div>, got %s", b.String())
+	}
+}

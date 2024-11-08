@@ -43,9 +43,9 @@ func (j J) attr(attrs Attrs) string {
 	result := ""
 	for k, v := range attrs {
 		if v == nil {
-			result = fmt.Sprintf(" %s", k)
+			result += fmt.Sprintf(" %s", k)
 		} else {
-			result = fmt.Sprintf(" %s=\"%v\"", k, v)
+			result += fmt.Sprintf(" %s=\"%v\"", k, v)
 		}
 	}
 
