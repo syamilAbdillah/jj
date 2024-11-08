@@ -26,3 +26,27 @@ func main() {
 
 	http.ListenAndServe(":8080", nil)
 }
+
+func Conditional(j jj.J, isLoggedIn bool) {
+	href := "/login"
+	if isLoggedIn {
+		href = "/profile"
+	}
+	j.A(jj.Attrs{"href": href}, func(j jj.J) {
+		if isLoggedIn {
+			j.Text("Profile")
+		} else {
+			j.Text("Login")
+		}
+	})
+}
+
+func Loop(j jj.J, users []string) {
+	j.Ul(nil, func(j jj.J) {
+		for _, user := range users {
+			j.Li(nil, func(j jj.J) {
+				j.Text(user)
+			})
+		}
+	})
+}

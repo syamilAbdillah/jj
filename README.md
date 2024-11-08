@@ -55,6 +55,40 @@ func main() {
 
 ```
 
+#### Conditional
+
+```go
+
+func Conditional(j jj.J, isLoggedIn bool) {
+	href := "/login"
+	if isLoggedIn {
+		href = "/profile"
+	}
+	j.A(jj.Attrs{"href": href}, func(j jj.J) {
+		if isLoggedIn {
+			j.Text("Profile")
+		} else {
+			j.Text("Login")
+		}
+	})
+}
+```
+
+#### Loop
+
+```go
+
+func Loop(j jj.J, users []string) {
+	j.Ul(nil, func(j jj.J) {
+		for _, user := range users {
+			j.Li(nil, func(j jj.J) {
+				j.Text(user)
+			})
+		}
+	})
+}
+```
+
 ## TODO
 
 - <input type="checkbox" disabled /> codegen tool from HTML to JJ syntax
