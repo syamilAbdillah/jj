@@ -1,6 +1,6 @@
 # JJ - A Go HTML Builder
 
-Try HTML components in pure Go.
+Write HTML without leaving your lovely Go files.
 
 ## Install
 
@@ -60,11 +60,7 @@ func main() {
 ```go
 
 func Conditional(j jj.J, isLoggedIn bool) {
-	href := "/login"
-	if isLoggedIn {
-		href = "/profile"
-	}
-	j.A(jj.Attrs{"href": href}, func(j jj.J) {
+	j.A(jj.Attrs{"href": jj.Ternary(isLoggedIn, "/profile", "/login")}, func(j jj.J) {
 		if isLoggedIn {
 			j.Text("Profile")
 		} else {
@@ -91,10 +87,10 @@ func Loop(j jj.J, users []string) {
 
 ## TODO
 
-- <input type="checkbox" disabled /> codegen tool from HTML to JJ syntax
-- <input type="checkbox" disabled /> more tests
-- <input type="checkbox" disabled /> more examples
-- <input type="checkbox" disabled /> documentation site
+- [ ] codegen tool from HTML to JJ syntax
+- [x] more tests
+- [x] more examples
+- [ ] documentation site
 
 ### why the name is JJ?
 
