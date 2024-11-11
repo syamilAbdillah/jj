@@ -55,7 +55,7 @@ func TestMultipleAttributes(t *testing.T) {
 	New(&b).CustomElement("div", Attrs{"class": "foo", "id": "bar"}, func(j J) {
 		j.Text("Hello")
 	})
-	if b.String() != "<div class=\"foo\" id=\"bar\">Hello</div>" || b.String() != "<div id=\"bar\" class=\"foo\">Hello</div>" {
+	if b.String() != "<div class=\"foo\" id=\"bar\">Hello</div>" && b.String() != "<div id=\"bar\" class=\"foo\">Hello</div>" {
 		t.Errorf("Expected <div class=\"foo\" id=\"bar\">Hello</div>, got %s", b.String())
 	}
 }
@@ -80,5 +80,18 @@ func TestNilAttributes(t *testing.T) {
 	New(&b).Input(Attrs{"required": nil})
 	if b.String() != "<input required/>" {
 		t.Errorf("Expected <input required/> got %s", b.String())
+	}
+}
+
+func TestTernairy(t *testing.T) {
+	var b bytes.Buffer
+	New(&b).CustomElement("div", nil, func(j J) {
+		j.CustomElement("span", nil, func(j J) {
+			j.Text(Ternary(true, "Hello", "World"))
+		})
+	})
+	expected := "<div><span>Hello</span></div>"
+	if b.String() != expected {
+		t.Errorf("Expected %s, got %s", expected, b.String())
 	}
 }

@@ -52,6 +52,14 @@ func (j J) attr(attrs Attrs) string {
 	return result
 }
 
+func Ternary[T any](condition bool, trueValue T, falseValue T) T {
+	if condition {
+		return trueValue
+	} else {
+		return falseValue
+	}
+}
+
 func (j J) CustomElement(tag string, attrs Attrs, f JFunc) {
 	j.element(tag, attrs, f)
 }
