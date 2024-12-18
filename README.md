@@ -8,6 +8,8 @@ Write HTML without leaving your lovely Go files.
 go get github.com/syamilAbdillah/jj
 ```
 
+> v2 is break everything, so good luck with that
+>
 > don't install this shit. just copy and paste it to your codebase.
 >
 > shamelessly stole [htmgolang](https://github.com/htmgolang/htmg) code and changed it to my heart's content.
@@ -34,17 +36,20 @@ import (
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		j := jj.New(w)
-		j.Raw("<!DOCTYPE html>")
-		j.Html(nil, func(j jj.J) {
-			j.Head(nil, func(j jj.J) {
-				j.Title(nil, func(j jj.J) {
-					j.Text("Hello World")
+		jj.Render(w, func(j *jj.J) {
+			j.Raw("<!DOCTYPE html>")
+			j.Html(nil, func() {
+				j.Head(nil, func() {
+					j.Title(nil, func() {
+						j.Text("Hello World")
+					})
 				})
-			})
-			j.Body(jj.Attrs{"class": "container"}, func(j jj.J) {
-				j.H1(nil, func(j jj.J) {
-					j.Text("Hello World")
+				j.Body(jj.NewAttr().Class("container"), func() {
+					j.H1(nil, func() {
+						j.Text("Hello World")
+					})
+
+					j.Br(nil)
 				})
 			})
 		})
@@ -59,8 +64,16 @@ func main() {
 
 ```go
 
-func Conditional(j jj.J, isLoggedIn bool) {
-	j.A(jj.Attrs{"href": jj.Ternary(isLoggedIn, "/profile", "/login")}, func(j jj.J) {
+
+func Conditional(j *jj.J, isLoggedIn bool) {
+	atr := jj.NewAttr()
+	if isLoggedIn {
+		atr.Href("/profile")
+	} else {
+		atr.Href("/login")
+	}
+
+	j.A(atr, func() {
 		if isLoggedIn {
 			j.Text("Profile")
 		} else {
@@ -74,10 +87,11 @@ func Conditional(j jj.J, isLoggedIn bool) {
 
 ```go
 
-func Loop(j jj.J, users []string) {
-	j.Ul(nil, func(j jj.J) {
+
+func Loop(j *jj.J, users []string) {
+	j.Ul(nil, func() {
 		for _, user := range users {
-			j.Li(nil, func(j jj.J) {
+			j.Li(nil, func() {
 				j.Text(user)
 			})
 		}

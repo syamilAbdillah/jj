@@ -8,17 +8,20 @@ import (
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		j := jj.New(w)
-		j.Raw("<!DOCTYPE html>")
-		j.Html(nil, func(j jj.J) {
-			j.Head(nil, func(j jj.J) {
-				j.Title(nil, func(j jj.J) {
-					j.Text("Hello World")
+		jj.Render(w, func(j *jj.J) {
+			j.Raw("<!DOCTYPE html>")
+			j.Html(nil, func() {
+				j.Head(nil, func() {
+					j.Title(nil, func() {
+						j.Text("Hello World")
+					})
 				})
-			})
-			j.Body(jj.Attrs{"class": "container"}, func(j jj.J) {
-				j.H1(nil, func(j jj.J) {
-					j.Text("Hello World")
+				j.Body(jj.NewAttr().Class("container"), func() {
+					j.H1(nil, func() {
+						j.Text("Hello World")
+					})
+
+					j.Br(nil)
 				})
 			})
 		})
@@ -27,12 +30,15 @@ func main() {
 	http.ListenAndServe(":8080", nil)
 }
 
-func Conditional(j jj.J, isLoggedIn bool) {
-	href := "/login"
+func Conditional(j *jj.J, isLoggedIn bool) {
+	atr := jj.NewAttr()
 	if isLoggedIn {
-		href = "/profile"
+		atr.Href("/profile")
+	} else {
+		atr.Href("/login")
 	}
-	j.A(jj.Attrs{"href": href}, func(j jj.J) {
+
+	j.A(atr, func() {
 		if isLoggedIn {
 			j.Text("Profile")
 		} else {
@@ -41,10 +47,10 @@ func Conditional(j jj.J, isLoggedIn bool) {
 	})
 }
 
-func Loop(j jj.J, users []string) {
-	j.Ul(nil, func(j jj.J) {
+func Loop(j *jj.J, users []string) {
+	j.Ul(nil, func() {
 		for _, user := range users {
-			j.Li(nil, func(j jj.J) {
+			j.Li(nil, func() {
 				j.Text(user)
 			})
 		}

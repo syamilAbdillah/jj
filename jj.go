@@ -7,72 +7,68 @@ import (
 )
 
 type J struct {
-	io.Writer
+	w io.Writer
 }
 
-type JFunc func(J)
-type Attrs map[string]any
-
-func New(w io.Writer) J {
-	return J{w}
+func (j *J) writeString(str string) {
+	j.w.Write([]byte(str))
 }
 
-func (j J) write(str string) {
-	j.Write([]byte(str))
+type Attributes interface {
+	Bytes() []byte
 }
 
-func (j J) element(tag string, attrs Attrs, f JFunc) {
-	j.write("<")
-	j.write(tag)
-	j.write(j.attr(attrs))
-	j.write(">")
-	f(j)
-	j.write("</")
-	j.write(tag)
-	j.write(">")
-}
-
-func (j J) voidElement(text string, attrs Attrs) {
-	j.write("<")
-	j.write(text)
-	j.write(j.attr(attrs))
-	j.write("/>")
-}
-
-func (j J) attr(attrs Attrs) string {
-	result := ""
-	for k, v := range attrs {
-		if v == nil {
-			result += fmt.Sprintf(" %s", k)
-		} else {
-			result += fmt.Sprintf(" %s=\"%v\"", k, v)
-		}
+func (j *J) open(tag string, attr Attributes) {
+	j.writeString("<")
+	j.writeString(tag)
+	if attr != nil {
+		j.w.Write(attr.Bytes())
 	}
-
-	return result
+	j.writeString(">")
 }
 
-func Ternary[T any](condition bool, trueValue T, falseValue T) T {
-	if condition {
-		return trueValue
-	} else {
-		return falseValue
+func (j *J) close(tag string) {
+	j.writeString("</")
+	j.writeString(tag)
+	j.writeString(">")
+}
+
+func (j *J) Element(tag string, attrs Attributes, f func()) {
+	j.open(tag, attrs)
+
+	if f != nil {
+		f()
+		j.close(tag)
 	}
 }
 
-func (j J) CustomElement(tag string, attrs Attrs, f JFunc) {
-	j.element(tag, attrs, f)
+func Render(w io.Writer, f func(j *J)) {
+	j := J{w}
+	f(&j)
 }
 
-func (j J) CustomVoidElement(tag string, attrs Attrs) {
-	j.voidElement(tag, attrs)
+func (j *J) Text(text string) {
+	j.writeString(html.EscapeString(text))
 }
 
-func (j J) Text(text string) {
-	j.write(html.EscapeString(text))
+func (j *J) Textf(f string, a ...any) {
+	t := fmt.Sprintf(f, a...)
+	j.writeString(t)
+}
+
+func (j *J) TextFunc(t string) func() {
+	return func() {
+		j.Text(t)
+	}
+}
+
+func (j *J) TextfFunc(f string, a ...any) func() {
+	return func() {
+		j.Textf(f, a...)
+	}
 }
 
 // Raw writes raw HTML to the output. be careful with this.
-func (j J) Raw(html string) {
-	j.write(html)
+func (j *J) Raw(html string) {
+	j.writeString(html)
 }

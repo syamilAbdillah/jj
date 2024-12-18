@@ -30,8 +30,8 @@ package jj
 
 var elementTemplate = `
 
-func (j J) %s(attrs Attrs, f JFunc) {
-	j.element("%s", attrs, f)
+func (j *J) %s(attrs Attributes, f func()) {
+	j.Element("%s", attrs, f)
 }
 `
 
@@ -41,8 +41,8 @@ func generateElement(name string) string {
 
 var voidElementTemplate = `
 
-func (j J) %s(attrs Attrs) {
-	j.voidElement("%s", attrs)
+func (j *J) %s(attrs Attributes) {
+	j.Element("%s", attrs, nil)
 }
 `
 
@@ -108,6 +108,7 @@ var elements = []string{
 	"label",
 	"legend",
 	"li",
+	"main",
 	"map",
 	"mark",
 	"menu",

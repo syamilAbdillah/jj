@@ -2,15 +2,16 @@ package jj
 
 import (
 	"bytes"
-	"fmt"
 	"testing"
 )
 
 func TestJ(t *testing.T) {
 	var b bytes.Buffer
-	New(&b).CustomElement("div", nil, func(j J) {
-		j.CustomElement("span", nil, func(j J) {
-			j.Text("Hello")
+	Render(&b, func(j *J) {
+		j.Element("div", nil, func() {
+			j.Element("span", nil, func() {
+				j.Text("Hello")
+			})
 		})
 	})
 	if b.String() != "<div><span>Hello</span></div>" {
@@ -20,20 +21,24 @@ func TestJ(t *testing.T) {
 
 func TestJVoidElement(t *testing.T) {
 	var b bytes.Buffer
-	New(&b).CustomVoidElement("div", nil)
-	if b.String() != "<div/>" {
-		t.Errorf("Expected <div/>, got %s", b.String())
+	Render(&b, func(j *J) {
+		j.Element("br", nil, nil)
+	})
+	if b.String() != "<br>" {
+		t.Errorf("Expected <br>, got %s", b.String())
 	}
 }
 
 func TestChildrenNodes(t *testing.T) {
 	var b bytes.Buffer
-	New(&b).CustomElement("div", nil, func(j J) {
-		j.CustomElement("span", nil, func(j J) {
-			j.Text("Hello")
-		})
-		j.CustomElement("span", nil, func(j J) {
-			j.Text("World")
+	Render(&b, func(j *J) {
+		j.Div(nil, func() {
+			j.Span(nil, func() {
+				j.Text("Hello")
+			})
+			j.Span(nil, func() {
+				j.Text("World")
+			})
 		})
 	})
 	expected := "<div><span>Hello</span><span>World</span></div>"
@@ -44,7 +49,9 @@ func TestChildrenNodes(t *testing.T) {
 
 func TestJText(t *testing.T) {
 	var b bytes.Buffer
-	New(&b).Text("Hello")
+	Render(&b, func(j *J) {
+		j.Text("Hello")
+	})
 	if b.String() != "Hello" {
 		t.Errorf("Expected Hello, got %s", b.String())
 	}
@@ -52,22 +59,24 @@ func TestJText(t *testing.T) {
 
 func TestMultipleAttributes(t *testing.T) {
 	var b bytes.Buffer
-	New(&b).CustomElement("div", Attrs{"class": "foo", "id": "bar"}, func(j J) {
-		j.Text("Hello")
+	Render(&b, func(j *J) {
+		j.Div(NewAttr().Class("foo").ID("bar"), func() {
+			j.Text("Hello")
+		})
 	})
-	if b.String() != "<div class=\"foo\" id=\"bar\">Hello</div>" && b.String() != "<div id=\"bar\" class=\"foo\">Hello</div>" {
+	if b.String() != "<div class=\"foo\" id=\"bar\">Hello</div>" {
 		t.Errorf("Expected <div class=\"foo\" id=\"bar\">Hello</div>, got %s", b.String())
 	}
 }
 
 func TestLooping(t *testing.T) {
 	var b bytes.Buffer
-	New(&b).Div(nil, func(j J) {
-		for i := 0; i < 10; i++ {
-			j.Span(nil, func(j J) {
-				j.Text(fmt.Sprintf("%d", i))
-			})
-		}
+	Render(&b, func(j *J) {
+		j.Div(nil, func() {
+			for i := 0; i < 10; i++ {
+				j.Span(nil, j.TextfFunc("%d", i))
+			}
+		})
 	})
 	expected := "<div><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>"
 	if b.String() != expected {
@@ -75,23 +84,14 @@ func TestLooping(t *testing.T) {
 	}
 }
 
-func TestNilAttributes(t *testing.T) {
+func TestVoidAttributes(t *testing.T) {
 	var b bytes.Buffer
-	New(&b).Input(Attrs{"required": nil})
-	if b.String() != "<input required/>" {
-		t.Errorf("Expected <input required/> got %s", b.String())
-	}
-}
-
-func TestTernairy(t *testing.T) {
-	var b bytes.Buffer
-	New(&b).CustomElement("div", nil, func(j J) {
-		j.CustomElement("span", nil, func(j J) {
-			j.Text(Ternary(true, "Hello", "World"))
-		})
+	Render(&b, func(j *J) {
+		j.Input(NewAttr().Required())
 	})
-	expected := "<div><span>Hello</span></div>"
+
+	expected := "<input required>"
 	if b.String() != expected {
-		t.Errorf("Expected %s, got %s", expected, b.String())
+		t.Errorf("Expected %s got %s", expected, b.String())
 	}
 }

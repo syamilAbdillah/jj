@@ -5,538 +5,543 @@ package jj
 // ELEMENTS
 
 
-func (j J) A(attrs Attrs, f JFunc) {
-	j.element("a", attrs, f)
+func (j *J) A(attrs Attributes, f func()) {
+	j.Element("a", attrs, f)
 }
 
 
-func (j J) Abbr(attrs Attrs, f JFunc) {
-	j.element("abbr", attrs, f)
+func (j *J) Abbr(attrs Attributes, f func()) {
+	j.Element("abbr", attrs, f)
 }
 
 
-func (j J) Address(attrs Attrs, f JFunc) {
-	j.element("address", attrs, f)
+func (j *J) Address(attrs Attributes, f func()) {
+	j.Element("address", attrs, f)
 }
 
 
-func (j J) Article(attrs Attrs, f JFunc) {
-	j.element("article", attrs, f)
+func (j *J) Article(attrs Attributes, f func()) {
+	j.Element("article", attrs, f)
 }
 
 
-func (j J) Aside(attrs Attrs, f JFunc) {
-	j.element("aside", attrs, f)
+func (j *J) Aside(attrs Attributes, f func()) {
+	j.Element("aside", attrs, f)
 }
 
 
-func (j J) Audio(attrs Attrs, f JFunc) {
-	j.element("audio", attrs, f)
+func (j *J) Audio(attrs Attributes, f func()) {
+	j.Element("audio", attrs, f)
 }
 
 
-func (j J) B(attrs Attrs, f JFunc) {
-	j.element("b", attrs, f)
+func (j *J) B(attrs Attributes, f func()) {
+	j.Element("b", attrs, f)
 }
 
 
-func (j J) Bdi(attrs Attrs, f JFunc) {
-	j.element("bdi", attrs, f)
+func (j *J) Bdi(attrs Attributes, f func()) {
+	j.Element("bdi", attrs, f)
 }
 
 
-func (j J) Bdo(attrs Attrs, f JFunc) {
-	j.element("bdo", attrs, f)
+func (j *J) Bdo(attrs Attributes, f func()) {
+	j.Element("bdo", attrs, f)
 }
 
 
-func (j J) Blockquote(attrs Attrs, f JFunc) {
-	j.element("blockquote", attrs, f)
+func (j *J) Blockquote(attrs Attributes, f func()) {
+	j.Element("blockquote", attrs, f)
 }
 
 
-func (j J) Body(attrs Attrs, f JFunc) {
-	j.element("body", attrs, f)
+func (j *J) Body(attrs Attributes, f func()) {
+	j.Element("body", attrs, f)
 }
 
 
-func (j J) Button(attrs Attrs, f JFunc) {
-	j.element("button", attrs, f)
+func (j *J) Button(attrs Attributes, f func()) {
+	j.Element("button", attrs, f)
 }
 
 
-func (j J) Canvas(attrs Attrs, f JFunc) {
-	j.element("canvas", attrs, f)
+func (j *J) Canvas(attrs Attributes, f func()) {
+	j.Element("canvas", attrs, f)
 }
 
 
-func (j J) Caption(attrs Attrs, f JFunc) {
-	j.element("caption", attrs, f)
+func (j *J) Caption(attrs Attributes, f func()) {
+	j.Element("caption", attrs, f)
 }
 
 
-func (j J) Cite(attrs Attrs, f JFunc) {
-	j.element("cite", attrs, f)
+func (j *J) Cite(attrs Attributes, f func()) {
+	j.Element("cite", attrs, f)
 }
 
 
-func (j J) Code(attrs Attrs, f JFunc) {
-	j.element("code", attrs, f)
+func (j *J) Code(attrs Attributes, f func()) {
+	j.Element("code", attrs, f)
 }
 
 
-func (j J) Colgroup(attrs Attrs, f JFunc) {
-	j.element("colgroup", attrs, f)
+func (j *J) Colgroup(attrs Attributes, f func()) {
+	j.Element("colgroup", attrs, f)
 }
 
 
-func (j J) Datalist(attrs Attrs, f JFunc) {
-	j.element("datalist", attrs, f)
+func (j *J) Datalist(attrs Attributes, f func()) {
+	j.Element("datalist", attrs, f)
 }
 
 
-func (j J) Dd(attrs Attrs, f JFunc) {
-	j.element("dd", attrs, f)
+func (j *J) Dd(attrs Attributes, f func()) {
+	j.Element("dd", attrs, f)
 }
 
 
-func (j J) Del(attrs Attrs, f JFunc) {
-	j.element("del", attrs, f)
+func (j *J) Del(attrs Attributes, f func()) {
+	j.Element("del", attrs, f)
 }
 
 
-func (j J) Details(attrs Attrs, f JFunc) {
-	j.element("details", attrs, f)
+func (j *J) Details(attrs Attributes, f func()) {
+	j.Element("details", attrs, f)
 }
 
 
-func (j J) Dfn(attrs Attrs, f JFunc) {
-	j.element("dfn", attrs, f)
+func (j *J) Dfn(attrs Attributes, f func()) {
+	j.Element("dfn", attrs, f)
 }
 
 
-func (j J) Div(attrs Attrs, f JFunc) {
-	j.element("div", attrs, f)
+func (j *J) Div(attrs Attributes, f func()) {
+	j.Element("div", attrs, f)
 }
 
 
-func (j J) Dl(attrs Attrs, f JFunc) {
-	j.element("dl", attrs, f)
+func (j *J) Dl(attrs Attributes, f func()) {
+	j.Element("dl", attrs, f)
 }
 
 
-func (j J) Dt(attrs Attrs, f JFunc) {
-	j.element("dt", attrs, f)
+func (j *J) Dt(attrs Attributes, f func()) {
+	j.Element("dt", attrs, f)
 }
 
 
-func (j J) Em(attrs Attrs, f JFunc) {
-	j.element("em", attrs, f)
+func (j *J) Em(attrs Attributes, f func()) {
+	j.Element("em", attrs, f)
 }
 
 
-func (j J) Fieldset(attrs Attrs, f JFunc) {
-	j.element("fieldset", attrs, f)
+func (j *J) Fieldset(attrs Attributes, f func()) {
+	j.Element("fieldset", attrs, f)
 }
 
 
-func (j J) Figcaption(attrs Attrs, f JFunc) {
-	j.element("figcaption", attrs, f)
+func (j *J) Figcaption(attrs Attributes, f func()) {
+	j.Element("figcaption", attrs, f)
 }
 
 
-func (j J) Figure(attrs Attrs, f JFunc) {
-	j.element("figure", attrs, f)
+func (j *J) Figure(attrs Attributes, f func()) {
+	j.Element("figure", attrs, f)
 }
 
 
-func (j J) Footer(attrs Attrs, f JFunc) {
-	j.element("footer", attrs, f)
+func (j *J) Footer(attrs Attributes, f func()) {
+	j.Element("footer", attrs, f)
 }
 
 
-func (j J) Form(attrs Attrs, f JFunc) {
-	j.element("form", attrs, f)
+func (j *J) Form(attrs Attributes, f func()) {
+	j.Element("form", attrs, f)
 }
 
 
-func (j J) H1(attrs Attrs, f JFunc) {
-	j.element("h1", attrs, f)
+func (j *J) H1(attrs Attributes, f func()) {
+	j.Element("h1", attrs, f)
 }
 
 
-func (j J) H2(attrs Attrs, f JFunc) {
-	j.element("h2", attrs, f)
+func (j *J) H2(attrs Attributes, f func()) {
+	j.Element("h2", attrs, f)
 }
 
 
-func (j J) H3(attrs Attrs, f JFunc) {
-	j.element("h3", attrs, f)
+func (j *J) H3(attrs Attributes, f func()) {
+	j.Element("h3", attrs, f)
 }
 
 
-func (j J) H4(attrs Attrs, f JFunc) {
-	j.element("h4", attrs, f)
+func (j *J) H4(attrs Attributes, f func()) {
+	j.Element("h4", attrs, f)
 }
 
 
-func (j J) H5(attrs Attrs, f JFunc) {
-	j.element("h5", attrs, f)
+func (j *J) H5(attrs Attributes, f func()) {
+	j.Element("h5", attrs, f)
 }
 
 
-func (j J) H6(attrs Attrs, f JFunc) {
-	j.element("h6", attrs, f)
+func (j *J) H6(attrs Attributes, f func()) {
+	j.Element("h6", attrs, f)
 }
 
 
-func (j J) Head(attrs Attrs, f JFunc) {
-	j.element("head", attrs, f)
+func (j *J) Head(attrs Attributes, f func()) {
+	j.Element("head", attrs, f)
 }
 
 
-func (j J) Header(attrs Attrs, f JFunc) {
-	j.element("header", attrs, f)
+func (j *J) Header(attrs Attributes, f func()) {
+	j.Element("header", attrs, f)
 }
 
 
-func (j J) Hgroup(attrs Attrs, f JFunc) {
-	j.element("hgroup", attrs, f)
+func (j *J) Hgroup(attrs Attributes, f func()) {
+	j.Element("hgroup", attrs, f)
 }
 
 
-func (j J) Html(attrs Attrs, f JFunc) {
-	j.element("html", attrs, f)
+func (j *J) Html(attrs Attributes, f func()) {
+	j.Element("html", attrs, f)
 }
 
 
-func (j J) I(attrs Attrs, f JFunc) {
-	j.element("i", attrs, f)
+func (j *J) I(attrs Attributes, f func()) {
+	j.Element("i", attrs, f)
 }
 
 
-func (j J) Iframe(attrs Attrs, f JFunc) {
-	j.element("iframe", attrs, f)
+func (j *J) Iframe(attrs Attributes, f func()) {
+	j.Element("iframe", attrs, f)
 }
 
 
-func (j J) Ins(attrs Attrs, f JFunc) {
-	j.element("ins", attrs, f)
+func (j *J) Ins(attrs Attributes, f func()) {
+	j.Element("ins", attrs, f)
 }
 
 
-func (j J) Kbd(attrs Attrs, f JFunc) {
-	j.element("kbd", attrs, f)
+func (j *J) Kbd(attrs Attributes, f func()) {
+	j.Element("kbd", attrs, f)
 }
 
 
-func (j J) Label(attrs Attrs, f JFunc) {
-	j.element("label", attrs, f)
+func (j *J) Label(attrs Attributes, f func()) {
+	j.Element("label", attrs, f)
 }
 
 
-func (j J) Legend(attrs Attrs, f JFunc) {
-	j.element("legend", attrs, f)
+func (j *J) Legend(attrs Attributes, f func()) {
+	j.Element("legend", attrs, f)
 }
 
 
-func (j J) Li(attrs Attrs, f JFunc) {
-	j.element("li", attrs, f)
+func (j *J) Li(attrs Attributes, f func()) {
+	j.Element("li", attrs, f)
 }
 
 
-func (j J) Map(attrs Attrs, f JFunc) {
-	j.element("map", attrs, f)
+func (j *J) Main(attrs Attributes, f func()) {
+	j.Element("main", attrs, f)
 }
 
 
-func (j J) Mark(attrs Attrs, f JFunc) {
-	j.element("mark", attrs, f)
+func (j *J) Map(attrs Attributes, f func()) {
+	j.Element("map", attrs, f)
 }
 
 
-func (j J) Menu(attrs Attrs, f JFunc) {
-	j.element("menu", attrs, f)
+func (j *J) Mark(attrs Attributes, f func()) {
+	j.Element("mark", attrs, f)
 }
 
 
-func (j J) Meter(attrs Attrs, f JFunc) {
-	j.element("meter", attrs, f)
+func (j *J) Menu(attrs Attributes, f func()) {
+	j.Element("menu", attrs, f)
 }
 
 
-func (j J) Nav(attrs Attrs, f JFunc) {
-	j.element("nav", attrs, f)
+func (j *J) Meter(attrs Attributes, f func()) {
+	j.Element("meter", attrs, f)
 }
 
 
-func (j J) Noscript(attrs Attrs, f JFunc) {
-	j.element("noscript", attrs, f)
+func (j *J) Nav(attrs Attributes, f func()) {
+	j.Element("nav", attrs, f)
 }
 
 
-func (j J) Object(attrs Attrs, f JFunc) {
-	j.element("object", attrs, f)
+func (j *J) Noscript(attrs Attributes, f func()) {
+	j.Element("noscript", attrs, f)
 }
 
 
-func (j J) Ol(attrs Attrs, f JFunc) {
-	j.element("ol", attrs, f)
+func (j *J) Object(attrs Attributes, f func()) {
+	j.Element("object", attrs, f)
 }
 
 
-func (j J) Optgroup(attrs Attrs, f JFunc) {
-	j.element("optgroup", attrs, f)
+func (j *J) Ol(attrs Attributes, f func()) {
+	j.Element("ol", attrs, f)
 }
 
 
-func (j J) Option(attrs Attrs, f JFunc) {
-	j.element("option", attrs, f)
+func (j *J) Optgroup(attrs Attributes, f func()) {
+	j.Element("optgroup", attrs, f)
 }
 
 
-func (j J) Output(attrs Attrs, f JFunc) {
-	j.element("output", attrs, f)
+func (j *J) Option(attrs Attributes, f func()) {
+	j.Element("option", attrs, f)
 }
 
 
-func (j J) P(attrs Attrs, f JFunc) {
-	j.element("p", attrs, f)
+func (j *J) Output(attrs Attributes, f func()) {
+	j.Element("output", attrs, f)
 }
 
 
-func (j J) Pre(attrs Attrs, f JFunc) {
-	j.element("pre", attrs, f)
+func (j *J) P(attrs Attributes, f func()) {
+	j.Element("p", attrs, f)
 }
 
 
-func (j J) Progress(attrs Attrs, f JFunc) {
-	j.element("progress", attrs, f)
+func (j *J) Pre(attrs Attributes, f func()) {
+	j.Element("pre", attrs, f)
 }
 
 
-func (j J) Q(attrs Attrs, f JFunc) {
-	j.element("q", attrs, f)
+func (j *J) Progress(attrs Attributes, f func()) {
+	j.Element("progress", attrs, f)
 }
 
 
-func (j J) Rp(attrs Attrs, f JFunc) {
-	j.element("rp", attrs, f)
+func (j *J) Q(attrs Attributes, f func()) {
+	j.Element("q", attrs, f)
 }
 
 
-func (j J) Rt(attrs Attrs, f JFunc) {
-	j.element("rt", attrs, f)
+func (j *J) Rp(attrs Attributes, f func()) {
+	j.Element("rp", attrs, f)
 }
 
 
-func (j J) Ruby(attrs Attrs, f JFunc) {
-	j.element("ruby", attrs, f)
+func (j *J) Rt(attrs Attributes, f func()) {
+	j.Element("rt", attrs, f)
 }
 
 
-func (j J) S(attrs Attrs, f JFunc) {
-	j.element("s", attrs, f)
+func (j *J) Ruby(attrs Attributes, f func()) {
+	j.Element("ruby", attrs, f)
 }
 
 
-func (j J) Samp(attrs Attrs, f JFunc) {
-	j.element("samp", attrs, f)
+func (j *J) S(attrs Attributes, f func()) {
+	j.Element("s", attrs, f)
 }
 
 
-func (j J) Script(attrs Attrs, f JFunc) {
-	j.element("script", attrs, f)
+func (j *J) Samp(attrs Attributes, f func()) {
+	j.Element("samp", attrs, f)
 }
 
 
-func (j J) Section(attrs Attrs, f JFunc) {
-	j.element("section", attrs, f)
+func (j *J) Script(attrs Attributes, f func()) {
+	j.Element("script", attrs, f)
 }
 
 
-func (j J) Select(attrs Attrs, f JFunc) {
-	j.element("select", attrs, f)
+func (j *J) Section(attrs Attributes, f func()) {
+	j.Element("section", attrs, f)
 }
 
 
-func (j J) Small(attrs Attrs, f JFunc) {
-	j.element("small", attrs, f)
+func (j *J) Select(attrs Attributes, f func()) {
+	j.Element("select", attrs, f)
 }
 
 
-func (j J) Span(attrs Attrs, f JFunc) {
-	j.element("span", attrs, f)
+func (j *J) Small(attrs Attributes, f func()) {
+	j.Element("small", attrs, f)
 }
 
 
-func (j J) Strong(attrs Attrs, f JFunc) {
-	j.element("strong", attrs, f)
+func (j *J) Span(attrs Attributes, f func()) {
+	j.Element("span", attrs, f)
 }
 
 
-func (j J) Style(attrs Attrs, f JFunc) {
-	j.element("style", attrs, f)
+func (j *J) Strong(attrs Attributes, f func()) {
+	j.Element("strong", attrs, f)
 }
 
 
-func (j J) Sub(attrs Attrs, f JFunc) {
-	j.element("sub", attrs, f)
+func (j *J) Style(attrs Attributes, f func()) {
+	j.Element("style", attrs, f)
 }
 
 
-func (j J) Summary(attrs Attrs, f JFunc) {
-	j.element("summary", attrs, f)
+func (j *J) Sub(attrs Attributes, f func()) {
+	j.Element("sub", attrs, f)
 }
 
 
-func (j J) Sup(attrs Attrs, f JFunc) {
-	j.element("sup", attrs, f)
+func (j *J) Summary(attrs Attributes, f func()) {
+	j.Element("summary", attrs, f)
 }
 
 
-func (j J) Table(attrs Attrs, f JFunc) {
-	j.element("table", attrs, f)
+func (j *J) Sup(attrs Attributes, f func()) {
+	j.Element("sup", attrs, f)
 }
 
 
-func (j J) Tbody(attrs Attrs, f JFunc) {
-	j.element("tbody", attrs, f)
+func (j *J) Table(attrs Attributes, f func()) {
+	j.Element("table", attrs, f)
 }
 
 
-func (j J) Td(attrs Attrs, f JFunc) {
-	j.element("td", attrs, f)
+func (j *J) Tbody(attrs Attributes, f func()) {
+	j.Element("tbody", attrs, f)
 }
 
 
-func (j J) Textarea(attrs Attrs, f JFunc) {
-	j.element("textarea", attrs, f)
+func (j *J) Td(attrs Attributes, f func()) {
+	j.Element("td", attrs, f)
 }
 
 
-func (j J) Tfoot(attrs Attrs, f JFunc) {
-	j.element("tfoot", attrs, f)
+func (j *J) Textarea(attrs Attributes, f func()) {
+	j.Element("textarea", attrs, f)
 }
 
 
-func (j J) Th(attrs Attrs, f JFunc) {
-	j.element("th", attrs, f)
+func (j *J) Tfoot(attrs Attributes, f func()) {
+	j.Element("tfoot", attrs, f)
 }
 
 
-func (j J) Thead(attrs Attrs, f JFunc) {
-	j.element("thead", attrs, f)
+func (j *J) Th(attrs Attributes, f func()) {
+	j.Element("th", attrs, f)
 }
 
 
-func (j J) Time(attrs Attrs, f JFunc) {
-	j.element("time", attrs, f)
+func (j *J) Thead(attrs Attributes, f func()) {
+	j.Element("thead", attrs, f)
 }
 
 
-func (j J) Title(attrs Attrs, f JFunc) {
-	j.element("title", attrs, f)
+func (j *J) Time(attrs Attributes, f func()) {
+	j.Element("time", attrs, f)
 }
 
 
-func (j J) Tr(attrs Attrs, f JFunc) {
-	j.element("tr", attrs, f)
+func (j *J) Title(attrs Attributes, f func()) {
+	j.Element("title", attrs, f)
 }
 
 
-func (j J) Ul(attrs Attrs, f JFunc) {
-	j.element("ul", attrs, f)
+func (j *J) Tr(attrs Attributes, f func()) {
+	j.Element("tr", attrs, f)
 }
 
 
-func (j J) Var(attrs Attrs, f JFunc) {
-	j.element("var", attrs, f)
+func (j *J) Ul(attrs Attributes, f func()) {
+	j.Element("ul", attrs, f)
 }
 
 
-func (j J) Video(attrs Attrs, f JFunc) {
-	j.element("video", attrs, f)
+func (j *J) Var(attrs Attributes, f func()) {
+	j.Element("var", attrs, f)
+}
+
+
+func (j *J) Video(attrs Attributes, f func()) {
+	j.Element("video", attrs, f)
 }
 
 // VOID ELEMENTS
 
 
-func (j J) Area(attrs Attrs) {
-	j.voidElement("area", attrs)
+func (j *J) Area(attrs Attributes) {
+	j.Element("area", attrs, nil)
 }
 
 
-func (j J) Base(attrs Attrs) {
-	j.voidElement("base", attrs)
+func (j *J) Base(attrs Attributes) {
+	j.Element("base", attrs, nil)
 }
 
 
-func (j J) Br(attrs Attrs) {
-	j.voidElement("br", attrs)
+func (j *J) Br(attrs Attributes) {
+	j.Element("br", attrs, nil)
 }
 
 
-func (j J) Col(attrs Attrs) {
-	j.voidElement("col", attrs)
+func (j *J) Col(attrs Attributes) {
+	j.Element("col", attrs, nil)
 }
 
 
-func (j J) Command(attrs Attrs) {
-	j.voidElement("command", attrs)
+func (j *J) Command(attrs Attributes) {
+	j.Element("command", attrs, nil)
 }
 
 
-func (j J) Embed(attrs Attrs) {
-	j.voidElement("embed", attrs)
+func (j *J) Embed(attrs Attributes) {
+	j.Element("embed", attrs, nil)
 }
 
 
-func (j J) Hr(attrs Attrs) {
-	j.voidElement("hr", attrs)
+func (j *J) Hr(attrs Attributes) {
+	j.Element("hr", attrs, nil)
 }
 
 
-func (j J) Img(attrs Attrs) {
-	j.voidElement("img", attrs)
+func (j *J) Img(attrs Attributes) {
+	j.Element("img", attrs, nil)
 }
 
 
-func (j J) Input(attrs Attrs) {
-	j.voidElement("input", attrs)
+func (j *J) Input(attrs Attributes) {
+	j.Element("input", attrs, nil)
 }
 
 
-func (j J) Keygen(attrs Attrs) {
-	j.voidElement("keygen", attrs)
+func (j *J) Keygen(attrs Attributes) {
+	j.Element("keygen", attrs, nil)
 }
 
 
-func (j J) Link(attrs Attrs) {
-	j.voidElement("link", attrs)
+func (j *J) Link(attrs Attributes) {
+	j.Element("link", attrs, nil)
 }
 
 
-func (j J) Meta(attrs Attrs) {
-	j.voidElement("meta", attrs)
+func (j *J) Meta(attrs Attributes) {
+	j.Element("meta", attrs, nil)
 }
 
 
-func (j J) Param(attrs Attrs) {
-	j.voidElement("param", attrs)
+func (j *J) Param(attrs Attributes) {
+	j.Element("param", attrs, nil)
 }
 
 
-func (j J) Source(attrs Attrs) {
-	j.voidElement("source", attrs)
+func (j *J) Source(attrs Attributes) {
+	j.Element("source", attrs, nil)
 }
 
 
-func (j J) Track(attrs Attrs) {
-	j.voidElement("track", attrs)
+func (j *J) Track(attrs Attributes) {
+	j.Element("track", attrs, nil)
 }
 
 
-func (j J) Wbr(attrs Attrs) {
-	j.voidElement("wbr", attrs)
+func (j *J) Wbr(attrs Attributes) {
+	j.Element("wbr", attrs, nil)
 }
