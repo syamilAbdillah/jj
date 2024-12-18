@@ -8,7 +8,7 @@ Write HTML without leaving your lovely Go files.
 go get github.com/syamilAbdillah/jj
 ```
 
-> v2 is break everything, so good luck with that
+> v0.2.0 is break everything, so good luck with that
 >
 > don't install this shit. just copy and paste it to your codebase.
 >
